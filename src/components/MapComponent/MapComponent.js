@@ -1,7 +1,10 @@
+// MapComponent.js
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import Loader from '../Loader/Loader';
+import 'leaflet/dist/leaflet.css';
+
 
 const MapComponent = () => {
   // State to store the user's location
@@ -13,6 +16,7 @@ const MapComponent = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
+          // Store location in state
           setLocation({ lat: latitude, lng: longitude });
         },
         (error) => {
@@ -25,7 +29,7 @@ const MapComponent = () => {
     }
   }, []);
 
-  // If location is not yet available, show a loading message
+  // While location is being fetched, show a loading message
   if (!location) {
     return <Loader />;
   }
@@ -36,7 +40,8 @@ const MapComponent = () => {
       <TileLayer 
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {/* Marker: Add a marker at the user's location */}
+      
+      {/* Marker: Show marker at the user's location */}
       <Marker position={location}>
         <Popup>
           You are here!
