@@ -8,7 +8,7 @@ const MapComponent = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Your Google Maps API Key (replace with your own)
-  const googleMapsApiKey = "YOUR_GOOGLE_MAPS_API_KEY";
+  const googleMapsApiKey = process.env.GOOGLE_MAP_KEY;
 
   useEffect(() => {
     if (navigator.geolocation) {
