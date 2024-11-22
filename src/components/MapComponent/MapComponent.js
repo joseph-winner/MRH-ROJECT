@@ -1,7 +1,7 @@
 // MapComponent.js
 import React, { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
-import Loader from "./Loader/Loader";
+import Loader from "../Loader/Loader";
 
 const MapComponent = () => {
   // State to store the user's location
