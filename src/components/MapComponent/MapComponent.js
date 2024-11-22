@@ -8,7 +8,178 @@ const MapComponent = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Your Google Maps API Key (replace with your own)
-  const googleMapsApiKey = process.env.GOOGLE_MAP_KEY;
+  const googleMapsApiKey = "AIzaSyD-r_OAYdRv1ihMP4pGqLrRPVr_61JSVxE";
+
+  // Custom map styling
+  const mapStyles = [
+    {
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#212121"
+        }
+      ]
+    },
+    {
+      "elementType": "labels.icon",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#757575"
+        }
+      ]
+    },
+    {
+      "elementType": "labels.text.stroke",
+      "stylers": [
+        {
+          "color": "#212121"
+        }
+      ]
+    },
+    {
+      "featureType": "administrative.locality",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#d59563"
+        }
+      ]
+    },
+    {
+      "featureType": "poi",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#9e9e9e"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.park",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#2c5a71"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.park",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#6b9a76"
+        }
+      ]
+    },
+    {
+      "featureType": "road",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#2e2e2e"
+        }
+      ]
+    },
+    {
+      "featureType": "road",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#8a8a8a"
+        }
+      ]
+    },
+    {
+      "featureType": "road",
+      "elementType": "labels.text.stroke",
+      "stylers": [
+        {
+          "color": "#212121"
+        }
+      ]
+    },
+    {
+      "featureType": "road.highway",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#746855"
+        }
+      ]
+    },
+    {
+      "featureType": "road.highway",
+      "elementType": "geometry.stroke",
+      "stylers": [
+        {
+          "color": "#1f1f1f"
+        }
+      ]
+    },
+    {
+      "featureType": "road.highway",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#f3d19c"
+        }
+      ]
+    },
+    {
+      "featureType": "transit",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#2f3948"
+        }
+      ]
+    },
+    {
+      "featureType": "transit.station",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#8a8a8a"
+        }
+      ]
+    },
+    {
+      "featureType": "water",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#17263c"
+        }
+      ]
+    },
+    {
+      "featureType": "water",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#515c6d"
+        }
+      ]
+    },
+    {
+      "featureType": "water",
+      "elementType": "labels.text.stroke",
+      "stylers": [
+        {
+          "color": "#17263c"
+        }
+      ]
+    }
+  ];
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -38,10 +209,13 @@ const MapComponent = () => {
           mapContainerStyle={{ height: '500px', width: '100%' }}
           center={location}
           zoom={14}
+          options={{
+            styles: mapStyles, // Apply custom styles
+          }}
         >
           {/* Marker at the user's location */}
           <Marker position={location} />
-          
+
           {/* Optional: InfoWindow on the marker */}
           <InfoWindow position={location}>
             <div>
