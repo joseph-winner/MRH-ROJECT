@@ -1,13 +1,13 @@
 // MapComponent.js
 import React, { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import Loader from "./Loader/Loader";
 
 const MapComponent = () => {
   // State to store the user's location
   const [location, setLocation] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Your Google Maps API Key (replace with your own)
   const googleMapsApiKey = "AIzaSyD-r_OAYdRv1ihMP4pGqLrRPVr_61JSVxE";
 
   // Custom map styling
@@ -199,7 +199,7 @@ const MapComponent = () => {
   }, []);
 
   if (!location) {
-    return <div>Loading map...</div>;
+    return <Loader />;
   }
 
   return (
