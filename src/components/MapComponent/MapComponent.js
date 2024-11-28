@@ -1,4 +1,3 @@
-// MapComponent.js
 import React, { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import Loader from "../Loader/Loader";
@@ -210,7 +209,12 @@ const MapComponent = () => {
           center={location}
           zoom={14}
           options={{
-            styles: mapStyles, // Apply custom styles
+            styles: mapStyles,
+            mapTypeControl: false,
+            fullscreenControl: false,
+            streetViewControl: false,
+            zoomControl: true,
+            scaleControl: true
           }}
         >
           {/* Marker at the user's location */}
